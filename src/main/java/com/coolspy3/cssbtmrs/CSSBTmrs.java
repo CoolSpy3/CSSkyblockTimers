@@ -22,13 +22,12 @@ import com.coolspy3.csmodloader.util.Utils;
 import com.coolspy3.cspackets.datatypes.MCColor;
 import com.coolspy3.cspackets.packets.ClientChatSendPacket;
 import com.coolspy3.util.ModUtil;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 @Mod(id = "cssbtmrs", name = "CSSkyblockTimers",
         description = "Provides notifications for various Skyblock events in chat.",
-        version = "1.0.0",
+        version = "1.0.1",
         dependencies = {"csmodloader:[1.1,2)", "cspackets:[1,2)", "csutils:[1,2)"})
 public class CSSBTmrs implements Entrypoint
 {
@@ -44,9 +43,6 @@ public class CSSBTmrs implements Entrypoint
 
     public CSSBTmrs()
     {
-        executor.scheduleAtFixedRate(this::everyMinute,
-                60 - LocalDateTime.now().get(ChronoField.SECOND_OF_MINUTE), 60, TimeUnit.SECONDS);
-
         fetchurObjects.add("Red Wool");
         fetchurObjects.add("Yellow Stained Glass");
         fetchurObjects.add("a Compass");
@@ -71,6 +67,8 @@ public class CSSBTmrs implements Entrypoint
     @Override
     public void init(PacketHandler handler)
     {
+        executor.scheduleAtFixedRate(this::everyMinute,
+                60 - LocalDateTime.now().get(ChronoField.SECOND_OF_MINUTE), 60, TimeUnit.SECONDS);
         handler.register(this);
         handler.register(new QueryTimeCommand("magma", "Magma Boss will spawn",
                 "https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn"));
