@@ -27,8 +27,8 @@ import com.google.gson.JsonParser;
 
 @Mod(id = "cssbtmrs", name = "CSSkyblockTimers",
         description = "Provides notifications for various Skyblock events in chat.",
-        version = "1.0.1",
-        dependencies = {"csmodloader:[1.1,2)", "cspackets:[1,2)", "csutils:[1,2)"})
+        version = "1.0.2",
+        dependencies = {"csmodloader:[1.3.1,2)", "cspackets:[1.2.1,2)", "csutils:[1.1.1,2)"})
 public class CSSBTmrs implements Entrypoint
 {
 
